@@ -1,20 +1,71 @@
 # 🚀 50 Days of C: Systems Programming & Core Computer Science Mastery
 
-Welcome to the **50 Days of C** repository — an exhaustive, production-grade curriculum designed to take you from core programming primitives and memory models to advanced pointers, dynamic memory management, low-level file I/O, and preprocessor mastery.
+[![Language: C99/C11](https://img.shields.io/badge/Language-ISO_C99_%2F_C11-00599C.svg?logo=c)](https://en.wikipedia.org/wiki/C99)
+[![Concurrency: POSIX pthreads](https://img.shields.io/badge/Concurrency-POSIX_pthreads-brightgreen.svg)](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html)
+[![Sandboxing: fork / execvp / WNOHANG](https://img.shields.io/badge/Sandboxing-Isolated_Processes-blueviolet.svg)](https://man7.org/linux/man-pages/man2/waitpid.2.html)
+[![Domain Engine: Bytecode VM](https://img.shields.io/badge/Engine-Bytecode_VM_%26_Parser-orange.svg)](./engine/)
+[![Curriculum: 50 Days](https://img.shields.io/badge/Modules-50_Production_Days-success.svg)](./)
 
-Every single day is structured into a dedicated module containing:
-1. **In-Depth Theory Guide (`*_theory.md`)**: Architectural concepts, memory layouts, CPU register/stack interactions, assembly-level insights, side-by-side comparison matrices, and common pitfalls.
-2. **Production ANSI C99 Code (`*_code.c`)**: Standalone, memory-safe, thoroughly documented implementations containing multi-scenario tests, edge case handlers, and 0 memory leaks.
+Welcome to the **50 Days of C** repository — an exhaustive, production-grade systems programming curriculum and architectural sandbox designed to take you from foundational memory models and hardware abstractions to advanced pointer topologies, concurrent thread pooling, dynamic process sandboxing, low-level binary I/O, and custom bytecode virtual machines.
 
 ---
 
-## 🛠️ Compilation & Development Guide
+## 🌟 Architectural Highlights & Domain Engines
+
+In addition to 50 comprehensive day-by-day curriculum modules, this repository includes two advanced systems-programming components:
+
+### 1. ⚙️ Custom Stack-Based Bytecode Virtual Machine & Parser (`engine/`)
+Located in [`engine/`](./engine/):
+- **Stack-Based Bytecode VM (`engine/vm.h`, `engine/vm.c`)**:
+  - Implements a custom 8-bit Instruction Set Architecture (ISA) with opcodes: `OP_PUSH`, `OP_ADD`, `OP_SUB`, `OP_MUL`, `OP_DIV`, `OP_NEG`, `OP_PRINT`, `OP_POP`, `OP_DUP`, and `OP_HALT`.
+  - Constant pool table deduplication, operand stack bounds verification, division-by-zero runtime error traps, and dynamic instruction disassembly tracing.
+  - Complete memory lifecycle management (`vm_create`, `vm_run`, `vm_free`).
+- **Recursive-Descent Expression Parser & Lexer (`engine/parser.c`)**:
+  - Genuine recursive-descent grammar parser with lexical tokenizer.
+  - Compiles arithmetic syntax trees directly into bytecode chunks with operator precedence (`*`, `/` over `+`, `-`), nested parentheses handling, and unary operators.
+  - Interactive CLI evaluator mode (`./engine/parser_vm "expression"`) plus an automated architectural verification matrix.
+
+### 2. ⚡ Multi-Threaded Process-Sandboxed Verification Harness (`harness/`)
+Located in [`harness/`](./harness/):
+- **Concurrent Thread Pooling (`harness/verifier.c`)**:
+  - Spawns a pool of worker POSIX threads (`pthread_create`, `pthread_join`) fetching tasks from a thread-safe work queue guarded by mutual exclusion (`pthread_mutex_t`).
+- **External I/O Resilience & Process Sandboxing**:
+  - Isolates compilation and execution in child processes via `fork()` and `execvp()`.
+  - Full output suppression and stream redirection (`freopen("/dev/null")`).
+  - Non-blocking timeout supervision via `waitpid(..., WNOHANG)` to prevent infinite loops, hanging I/O, or runaway code. Forcefully terminates timed-out processes using `SIGKILL`.
+- **High-Resolution Microsecond Profiling**:
+  - Uses `gettimeofday()` to record precise compile-time and execution durations, aggregate throughput metrics, and output a detailed audit matrix across all 50 days.
+
+---
+
+## 🔨 Build Automation via Make
+
+The repository includes a centralized [`Makefile`](./Makefile) configured with `-Wall -Wextra -std=c99 -pthread -O2`:
+
+```bash
+# Compile both the Test Harness and the Domain Engine
+make all
+
+# Run the complete test suite (Domain Engine tests + 50-Day Multi-Threaded Verifier)
+make test
+
+# Run only the Domain Engine test matrix & interactive compiler
+make test-engine
+
+# Run only the Multi-Threaded 50-Day Verifier Harness
+make test-harness
+
+# Clean all generated binaries and temporary files
+make clean
+```
+
+---
+
+## 🛠️ Individual Module Compilation & Development Guide
 
 All source code files strictly follow the **ANSI C99 Standard** (`-std=c99`) with all compiler warnings enabled.
 
-### Quick Compile & Run
-
-To compile and run any day's implementation:
+### Quick Compile & Run Any Day
 
 ```bash
 # General template
@@ -365,7 +416,14 @@ gcc -Wall -Wextra -std=c99 -pedantic Day_01/01_Intro_History_Structure_code.c -o
 
 ```text
 50-Days-of-C/
-├── README.md
+├── README.md                                    # Master documentation & curriculum roadmap
+├── Makefile                                     # Build automation for harness & domain engine
+├── engine/                                      # Custom Domain Engine
+│   ├── vm.h                                     # Stack-based Bytecode Virtual Machine header
+│   ├── vm.c                                     # VM instruction dispatch, constant pool & disassembly
+│   └── parser.c                                 # Recursive-descent expression parser & lexer
+├── harness/                                     # Verification Test Harness
+│   └── verifier.c                               # Multi-threaded process-sandboxed test runner
 ├── Day_01/
 │   ├── 01_Intro_History_Structure_theory.md
 │   └── 01_Intro_History_Structure_code.c
