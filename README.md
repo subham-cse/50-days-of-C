@@ -407,8 +407,8 @@ gcc -Wall -Wextra -std=c99 -pedantic Day_01/01_Intro_History_Structure_code.c -o
 | **46** | **File Streams: Open & Close** | [Day_46 Theory](./Day_46/46_File_Streams_Open_Close_theory.md) | [Day_46 Code](./Day_46/46_File_Streams_Open_Close_code.c) | `FILE*` Stream Handles, OS Descriptors, Buffer Modes, `errno` Diagnostics |
 | **47** | **Formatted File I/O** | [Day_47 Theory](./Day_47/47_Formatted_IO_Fprintf_Fscanf_theory.md) | [Day_47 Code](./Day_47/47_Formatted_IO_Fprintf_Fscanf_code.c) | `fprintf`, `fscanf`, Scanset Regex Matching, Safe CSV Parser |
 | **48** | **Binary File Streams & Random Access** | [Day_48 Theory](./Day_48/48_Binary_Files_Fread_Fwrite_theory.md) | [Day_48 Code](./Day_48/48_Binary_Files_Fread_Fwrite_code.c) | Raw Serialization (`fread`/`fwrite`), `fseek`, `ftell`, Random Access DB |
-| **49** | **Command-Line Arguments** | [Day_49 Theory](./Day_49/49_Command_Line_Arguments_theory.md) | [Day_49 Code](./Day_49/49_Command_Line_Arguments_code.c) | `argc`/`argv` Stack Layout, CLI State Machine, Flag/Option Parsing |
-| **50** | **Preprocessor & Macro Mastery** | [Day_50 Theory](./Day_50/50_Preprocessor_Directives_Const_Macros_theory.md) | [Day_50 Code](./Day_50/50_Preprocessor_Directives_Const_Macros_code.c) | `#define`, Stringizing `#`, Token-Pasting `##`, Header Guards, X-Macros |
+| **49** | **Recursive-Descent AST Parser & Stack Bytecode VM** | [Day_49 Theory](./Day_49/49_Command_Line_Arguments_theory.md) | [Day_49 Code](./Day_49/49_Command_Line_Arguments_code.c) | Recursive-Descent Parser, AST Nodes, Custom Bytecode ISA, Stack VM (`OP_PUSH`, `OP_ADD`, `OP_DIV`), Division-by-Zero Trap, CLI Evaluator |
+| **50** | **POSIX Concurrency, Thread Pools & Sandboxed Process Execution** | [Day_50 Theory](./Day_50/50_Preprocessor_Directives_Const_Macros_theory.md) | [Day_50 Code](./Day_50/50_Preprocessor_Directives_Const_Macros_code.c) | POSIX Threads (`pthread_create`/`join`), Mutexes (`pthread_mutex_t`), Sandboxing (`fork`/`execvp`), Stream Redirection (`freopen`), Timeout Supervision (`waitpid` `WNOHANG`), `gettimeofday` |
 
 ---
 

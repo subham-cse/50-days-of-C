@@ -125,8 +125,8 @@ static const DayTask g_curriculum[TOTAL_DAYS] = {
     { 46, "Day_46", "46_File_Streams_Open_Close_code.c", "File Streams, Handles & Buffer Flushing" },
     { 47, "Day_47", "47_Formatted_IO_Fprintf_Fscanf_code.c", "Formatted File I/O & Scansets" },
     { 48, "Day_48", "48_Binary_Files_Fread_Fwrite_code.c", "Binary File Streams & Random Access" },
-    { 49, "Day_49", "49_Command_Line_Arguments_code.c", "Command-Line Arguments & Option Parsing" },
-    { 50, "Day_50", "50_Preprocessor_Directives_Const_Macros_code.c", "Preprocessor Directives & Macros" }
+    { 49, "Day_49", "49_Command_Line_Arguments_code.c", "AST Parser & Bytecode VM Engine" },
+    { 50, "Day_50", "50_Preprocessor_Directives_Const_Macros_code.c", "POSIX Threads, Mutexes & Sandboxing" }
 };
 
 /* Thread-safe queue state */
